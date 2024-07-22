@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assest\css\style.css">
+    <title></title>
+</head>
+<body>
+    
+    <div id="Calculadora">
+        
+            <p id="display"></p>
+            
+            <div id="changeSet">
+                
+                    <a href="#" class="next" onclick="showDivs(0)">C.cientifica</a>
+                    <a href="#" class="next" onclick="showDivs(1)">Data</a>
+                    <a href="#" class="next" onclick="showDivs(2)">Currency</span> </a>
+                    <a href="#" class="next" onclick="showDivs(3)">IMC</a>
+                    <a href="#" class="next" onclick="showDivs(4)">Time</a>
+                
+            
+            </div>
+            
+        <div id="input_area" class="slider-container" >
+
+                <div class="slider fade" id="set0">
+                    <div class="flex " >
+                        <button class="button" onclick="clean()">AC</button>
+                        <button class="button"onclick="del()">Del</button>
+                        <button class="button" onclick="insert('%')">%</button>
+                        <button class="button" onclick="insert('/')">/</button>
+                        <button class="button" onclick="raiz()">√</button>
+                        <button class="button" onclick="exp()">Exp</button>
+                    </div>
+                    <div class="flex">
+                        <button class="button" onclick="insert('7')">7</button>
+                        <button class="button" onclick="insert('8')">8</button>
+                        <button class="button" onclick="insert('9')">9</button>
+                        <button class="button "onclick="insert('*')" >X</button>
+                        <button class="button" onclick="senn()">Sin</button>
+                        <button class="button" onclick="pi()">π</button>
+                    </div>
+                    <div class="flex" >
+                        <button class="button"onclick="insert('4')">4</button>
+                        <button class="button" onclick="insert('5')">5</button>
+                        <button class="button" onclick="insert('6')">6</button>
+                        <button class="button" onclick="insert('-')">-</button>
+                        <button class="button" onclick="dez()">10ˣ</button>
+                        
+                        <button class="button" onclick="coss()">Cos</button>
+                    </div>
+                    <div class="flex" >
+                        <button class="button" onclick="insert('1')">1</button>
+                        <button class="button" onclick="insert('2')">2</button>
+                        <button class="button" onclick="insert('3')">3</button>
+                        <button class="button" onclick="insert('+')">+</button>
+                        <button class="button" onclick="ln()">Log10</button>
+
+                        <button class="button" onclick="tang()">Tan</button>
+                    </div>
+                    <div class="flex">
+                        <button class="button" onclick="insert('0')">0</button>
+                        <button class="button" onclick="logs()">Log</button>
+                        <button class="button"onclick="insert('.')">.</button>
+                        <button class="button" onclick="el()">E</button>
+                        <button class="button" id="equal" onclick="calcular()">=</button>
+                    
+                    </div>
+                
+                </div>
+
+
+            <div class="slider fade" id="set1">
+                <div class="flex">
+                    <h1 class="color center">Calcular Data</h1>
+                    <div>
+                        <label for="date" class="color">Data Inicial:</label>
+                        <input type="date" id="date" name="date">
+                    </div>
+                
+                    <div>
+                        <label for="days" class="color">Dias a adicionar/subtrair:</label>
+                        <input type="number" id="days" name="days">
+                    </div>
+                
+                    <button onclick="addDays()" class="buttonGlobal">Adicionar Dias</button>
+                    <button onclick="subtractDays()" class="buttonGlobal">Subtrair Dias</button>
+                
+                    <h2 class="color">Nova Data: <span id="newDate"></span></h2>
+                
+                    <hr>
+                
+                    <div>
+                        <label for="startDate" class="color">Data Inicial:</label>
+                        <input type="date" id="startDate" name="startDate">
+                    </div>
+                
+                    <div>
+                        <label for="endDate" class="color">Data Final:</label>
+                        <input type="date" id="endDate" name="endDate" style="margin-left:8px ;">
+                    </div>
+                
+                    <button onclick="calculateDifference()" class="buttonGlobal">Calcular Diferença</button>
+                
+                    <h2 class="color">Diferença em Dias: <span id="difference"></span></h2>
+                </div>
+                
+            </div>
+
+
+
+
+
+            <div class="slider fade" id="set2">
+                <div class="flex">
+                        <h1 class="color center">Conversor de Moeda</h1>
+                        <p class="color">De: <span>
+                            <select name="" id="receber">
+                                <option value="EUR">Euro</option>
+                                <option value="USD">Dolar</option>
+                                <option value="CVE">Escudo</option>
+                            </select></span> </p>
+
+                        <p class="color" >Para: <span>
+                            <select name="" id="para">
+                                <option value="EUR" >Euro</option>
+                                <option value="USD">Dolar</option>
+                                <option value="CVE" >Escudo</option>
+                            </select></span> </p>
+                        <p class="color">Valor a converter: <span><input type="text" id="valor" class="inputCurrency"></span> </p>
+                        <button id="btnConverter" >Converter</button>
+                        <p id="resultado" class="color" ></p>
+                        
+
+                </div>
+            </div>
+
+
+
+
+
+            <div class="slider fade" id="set3">
+                <div class="flex">
+                    <h1 class="center color">Calcular IMC</h1>
+                    <form id="imcForm">
+                        <label for="weight" class="color">Peso (kg):</label>
+                        <input type="number" id="weight" name="weight" class="inputImc" required>
+                        <br>
+                        <label for="height"  class="color">Altura (cm):</label>
+                        <input type="number" id="height" name="height"class="inputImc" required>
+                        <br>
+                        <button type="button" id="buttonImc" onclick="calculateIMC()" >Calcular IMC</button>
+                        <button type="button" id="buttonImc2" onclick="cleanImc()">AC</button>
+                    </form>
+                        <p id="resultCoin"  class="color"></p>
+                </div>
+            </div>
+            
+            <div class="slider fade" id="set4">
+                <div class="flex">
+                        <h2 class="color center">Calcular Tempo</h2>
+                    <div>
+                        <label for="datetime" class="color">Data e Hora Inicial:</label>
+                        <input type="datetime-local" id="datetime" name="datetime">
+                    </div>
+
+                    <div>
+                        <label for="months" class="color">Meses:</label>
+                        <input type="number" id="months" name="months" style="margin-left:80px ;">
+                    </div>
+                    <div>
+                        <label for="weeks" class="color">Semanas:</label>
+                        <input type="number" id="weeks" name="weeks" style="margin-left:64px ;">
+                    </div>
+                    <div>
+                        <label for="days" class="color">Dias:</label>
+                        <input type="number" id="days" name="days" style="margin-left:93px ;">
+                    </div>
+                    <div>
+                        <label for="hours" class="color">Horas:</label>
+                        <input type="number" id="hours" name="hours" style="margin-left:84px ;">
+                    </div>
+                    <div>
+                        <label for="minutes" class="color">Minutos:</label>
+                        <input type="number" id="minutes" name="minutes" style="margin-left:69px ;">
+                    </div>
+                    <div>
+                        <label for="seconds" class="color">Segundos:</label>
+                        <input type="number" id="seconds" name="seconds" style="margin-left:60px ;">
+                    </div>
+
+                    <button onclick="addTime()"  class="buttonGlobal">Adicionar Tempo</button>
+                    <button onclick="subtractTime()"  class="buttonGlobal">Subtrair Tempo</button>
+
+                    <h3 class="color">Nova Data e Hora: <span id="newDatetime"></span></h3>
+
+
+
+                    <div>
+                        <label for="startDatetime"  class="color">Data e Hora Inicial:</label>
+                        <input type="datetime-local" id="startDatetime" name="startDatetime">
+                    </div>
+
+                    <div>
+                        <label for="endDatetime" class="color">Data e Hora Final:</label>
+                        <input type="datetime-local" id="endDatetime" name="endDatetime" style="margin-left:8px ;">
+                    </div>
+
+                    <button onclick="calculateTimeDifference()" class="buttonGlobal">Calcular Diferença</button>
+
+                    <h3 class="color">Diferença: <span id="timeDifference"></span></h3>
+                                    
+                                
+                                
+                </div>
+        
+        
+        
+            </div>
+        </div>
+        
+    
+       
+    </div>
+  <script src="assest\js\script.js"></script>  
+</body>
+
+</html>
